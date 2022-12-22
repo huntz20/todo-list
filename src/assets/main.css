@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.dashed-line {
+    @apply border-none h-[1px] mb-4;
+    background: #000;
+    background: repeating-linear-gradient(90deg,#000,#000 6px,transparent 6px,transparent 12px);
+}
