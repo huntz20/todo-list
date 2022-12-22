@@ -3,7 +3,7 @@ import addIcon from '../assets/add-svgrepo-com.svg'
 
 const TodoCard = ({}) => {
     const renderNoTask = () => {
-        return <div><span>No Task</span></div>
+        return <div className="bg-[#f3f3f3] border-2 border-[#e3e3e3] rounded-sm py-1 px-4"><span className="font-light">No Task</span></div>
     }
 
     const renderLoadingTask = () => {
@@ -32,15 +32,15 @@ const TodoCard = ({}) => {
         </div>
     }
 
-    return <div className="basis-1/4 border-2 rounded mr-8 p-2">
-        <span className="border-2 font-light p-[2px] rounded-md">
+    return <div className="basis-1/4 border-2 rounded mr-4 p-2">
+        <span className="border-2 font-light p-[6px] rounded-md inline-block mb-1">
             Group Name
         </span><br/>
-        <span>January - March</span>
-        <div>
+        <span className="inline-block mb-2 text-xs">January - March</span>
+        <div className="mb-4">
             {renderNoTask()}
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center cursor-pointer">
             <img className="inline-block mr-2 " width="18" src={addIcon} alt="add-icon"/>
             <span className="font-light text-sm">New Task</span>
         </div>
