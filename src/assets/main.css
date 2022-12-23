@@ -13,3 +13,8 @@
 .checked-background {
     background-image: url("./check.svg");
 }
+
+
+.bg-shadow {
+    background-color: rgba(0,0,0, 0.5);
+}
