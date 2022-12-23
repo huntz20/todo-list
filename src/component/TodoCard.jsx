@@ -7,7 +7,7 @@ const TodoCard = ({}) => {
     }
 
     const renderLoadingTask = () => {
-        return <div className="basis-1/4 border-2 rounded mr-8 py-6 px-4 animate-pulse mb-4">
+        return <div className="basis-1/4 border-2 rounded py-6 px-4 animate-pulse mb-4">
             <div className="h-4 bg-gray-400 rounded-md w-[200px] mb-4"></div>
             <hr className="dashed-line"/>
             <div className="flex items-center">
@@ -18,7 +18,7 @@ const TodoCard = ({}) => {
     }
 
     const renderLoading = () => {
-        return <div className="basis-1/4 border-2 rounded mr-8 py-4 px-2 animate-pulse">
+        return <div className="basis-1/4 border-2 rounded py-4 px-2 animate-pulse">
             <div className="h-4 bg-gray-400 rounded-md w-[80px] mb-4"></div>
             <div className="h-3 bg-gray-400 rounded-md w-[120px] mb-4"></div>
             <div>
@@ -38,7 +38,7 @@ const TodoCard = ({}) => {
         </div>
     }
     // return renderLoading()
-    return <div className="basis-1/4 border-2 rounded mr-4 p-4">
+    return <div className="border-2 rounded p-4">
         <span className="border-2 font-light p-[6px] rounded-md inline-block mb-1">
             Group Name
         </span><br/>
