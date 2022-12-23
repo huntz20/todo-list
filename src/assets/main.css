@@ -8,3 +8,8 @@
     background: #000;
     background: repeating-linear-gradient(90deg,#000,#000 6px,transparent 6px,transparent 12px);
 }
+
+
+.checked-background {
+    background-image: url("./check.svg");
+}
