@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const TaskForm = ({onSubmit, data = null}) => {
+const TaskForm = ({ data = null}) => {
     const [task, setTask] = useState(data ? data : {name: '', progress_percentage: ''})
     const handleProgressPercentageChange = (evt) => {
         const value = evt.target.value.replace('%','')
@@ -10,6 +10,9 @@ const TaskForm = ({onSubmit, data = null}) => {
         }
         setTask({...task, progress_percentage: value + '%'})
 
+    }
+    const onSubmit = (evt) => {
+        evt.preventDefault()
     }
     return <form onSubmit={onSubmit} className="mb-4">
         <div className="mb-4">

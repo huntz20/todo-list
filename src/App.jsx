@@ -1,8 +1,13 @@
 import TodoCard from "./component/TodoCard.jsx";
 import React from "react";
+import Modal from "./component/Modal.jsx";
+import AuthForm from "./component/AuthForm.jsx";
 function App() {
   return (
     <div className="App">
+        <Modal show={true} title="Signing">
+            <AuthForm />
+        </Modal>
         <div className="border-b-2 px-4 py-4">
             <h1 className="text-bold">Product Roadmap</h1>
         </div>
