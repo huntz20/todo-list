@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
         <Modal />
-
         <div className="border-b-2 px-4 py-4">
             <h1 className="text-bold">Product Roadmap</h1>
         </div>
