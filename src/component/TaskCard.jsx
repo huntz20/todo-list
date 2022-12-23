@@ -7,7 +7,7 @@ const TaskCard = ({}) => {
         return <div className="h-[20px] bg-teal-700 rounded-full w-[20px] bg-50 bg-center bg-no-repeat checked-background"></div>
     }
 
-    return <div className="border-2 rounded  py-6 px-4 mb-4">
+    return <div className="border-2 rounded  py-6 px-4 mb-4 bg-gray-100">
         <span className="font-medium text-sm leading-loose inline-block mb-3">Neque porro quisquam est qui dolorem ipsum </span>
         <hr className="dashed-line"/>
         <div className="flex items-center justify-between">
