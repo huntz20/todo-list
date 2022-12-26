@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import addIcon from '../assets/add-svgrepo-com.svg'
+import addIcon from '../assets/add.svg'
 import TaskCard from "./TaskCard.jsx";
 import Modal from "./Modal.jsx";
 import TaskForm from "./TaskForm.jsx";
