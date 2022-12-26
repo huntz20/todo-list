@@ -1,7 +1,14 @@
-import create from 'zustand'
+import createStore from 'zustand'
 import useTodoStore from "./useTodoStore.js";
-
-const useUserStore = create((set) => ({
+import {configurePersist} from "zustand-persist"
+const { persist, purge } = configurePersist({
+    storage: localStorage, // use `AsyncStorage` in react native
+})
+const useUserStore = createStore(persist({
+    key: 'auth', // required, child key of storage
+    allowlist: ['token', 'email'],
+    denylist: [],
+}, (set) => ({
     email: '',
     name: '',
     token: '',
@@ -60,6 +67,6 @@ const useUserStore = create((set) => ({
         useTodoStore.getState().fetch(response.auth_token)
         set({email: formVal.email, token: response.auth_token})
     }
-}))
+})))
 
 export default useUserStore

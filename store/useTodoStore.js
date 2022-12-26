@@ -14,6 +14,10 @@ const useTodoStore = create((set, get) => ({
     showTaskModal: false,
     taskLoading: false,
     parentSelected: null,
+    taskSelected: null,
+    setTaskSelected: (payload) => {
+        set({taskSelected: payload})
+    },
     setParentSelected: (payload) => {
         set({parentSelected: payload})
     },

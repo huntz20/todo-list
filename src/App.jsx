@@ -11,10 +11,16 @@ function App() {
     const addTodoModal = useTodoStore(state => state.showAddModal)
     const setAddTodoModal = useTodoStore(state => state.setShowAddModal)
     const email = useUserStore((state) => state.email)
+    const token = useUserStore((state) => state.token)
     const authLoading = useUserStore(state => state.loading)
     const isSigning = useUserStore(state => state.isSigning)
     const todoLoading = useTodoStore(state => state.loading)
     const todos = useTodoStore(state => state.todos)
+    const fetchTodos = useTodoStore(state => state.fetch)
+
+    if (token){
+        fetchTodos(token)
+    }
 
     const renderTodosLoading = () => {
         if (!todoLoading) return null;
