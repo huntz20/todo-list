@@ -18,7 +18,7 @@ function App() {
     const todos = useTodoStore(state => state.todos)
     const fetchTodos = useTodoStore(state => state.fetch)
 
-    if (token){
+    if (token && !todos.length){
         fetchTodos(token)
     }
 

@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import useTodoStore from "../../store/useTodoStore.js";
 
-const TaskForm = ({data = null}) => {
+const TaskForm = ({data = null, callback}) => {
     const [task, setTask] = useState(data ? data : {name: '', progress_percentage: ''})
     const addTask = useTodoStore(state => state.addTask)
     const onSubmit = async (evt) => {
         evt.preventDefault()
         await addTask(task)
         setTask({name: '', progress_percentage: ''})
+        if (callback) return  callback();
     }
     return <form onSubmit={onSubmit} className="mb-4">
         <div className="mb-4">

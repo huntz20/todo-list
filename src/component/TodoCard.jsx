@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import addIcon from '../assets/add.svg'
 import TaskCard from "./TaskCard.jsx";
 import Modal from "./Modal.jsx";
@@ -29,11 +29,11 @@ const cardStyle = [
     },
 ]
 const TodoCard = ({isLoading, data, index}) => {
-    const showTaskModal = useTodoStore(state => state.showTaskModal)
-    const setShowTaskModal = useTodoStore(state => state.setShowTaskModal)
+    // const showTaskModal = useTodoStore(state => state.showTaskModal)
+    // const setShowTaskModal = useTodoStore(state => state.setShowTaskModal)
     const setParentSelected = useTodoStore(state => state.setParentSelected)
     const style = cardStyle[index]
-
+    const [showTaskModal, setShowTaskModal] = useState(false)
 
     const handleOpenModalTask = () => {
         setShowTaskModal(true)
@@ -80,7 +80,7 @@ const TodoCard = ({isLoading, data, index}) => {
     const renderTask = () => {
         if (!data.children?.length) return null;
         return <div>
-            {data.children.map((e, i) => <TaskCard key={e.id} data={e}/>)}
+            {data.children.map((e, i) => <TaskCard key={e.id} data={e} parentIndex={index}/>)}
         </div>
     }
 
@@ -89,7 +89,7 @@ const TodoCard = ({isLoading, data, index}) => {
 
     return <div>
         <Modal show={showTaskModal} onClose={handleCloseModalTask} title="Create Task ">
-            <TaskForm/>
+            <TaskForm callback={() => setShowTaskModal(false)}/>
         </Modal>
         <div className={classNames("border-2 rounded p-4", [style.border, style.background])}>
         <span
