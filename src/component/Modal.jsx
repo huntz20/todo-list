@@ -2,7 +2,7 @@ import React from "react";
 import crossIcon from "../assets/cross.svg"
 import classNames from "classnames";
 
-const Modal = ({title = 'Placeholder', show = false, children, onClose}) => {
+const Modal = ({title = 'Placeholder', show = false, children, onClose, disableClose = false}) => {
     return <>
         <div
             className={classNames("fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto inset-0 h-modal h-full bg-shadow", {hidden: !show})}>
@@ -13,9 +13,11 @@ const Modal = ({title = 'Placeholder', show = false, children, onClose}) => {
                         <h3 className="text-xl font-semibold text-black-400">
                             {title}
                         </h3>
-                        <button type="button"
-                                className="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-                                onClick={onClose}>
+                        <button
+                            disabled={disableClose}
+                            type="button"
+                            className="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                            onClick={onClose}>
                             <img src={crossIcon} alt="cross-icon" width="24"/>
                             <span className="sr-only">Close modal</span>
                         </button>
