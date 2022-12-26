@@ -18,7 +18,7 @@ const TodoForm = () => {
         </div>
         <div className="mb-4">
             <label htmlFor="description">Description</label><br/>
-            <textarea className="progress-task" placeholder="Type your description" type="text" id="description" value={todo.description}
+            <textarea className="progress-task" placeholder="Type your description" id="description" value={todo.description}
                    onChange={(evt) => setTodo({...todo, description: evt.target.value})}/>
         </div>
 

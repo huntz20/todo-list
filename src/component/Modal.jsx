@@ -1,11 +1,11 @@
 import React from "react";
 import crossIcon from "../assets/cross.svg"
-import classNames from "classnames";
 
 const Modal = ({title = 'Placeholder', show = false, children, onClose, disableClose = false}) => {
+    if (!show) return null;
     return <>
         <div
-            className={classNames("fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto inset-0 h-modal h-full bg-shadow", {hidden: !show})}>
+            className="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto inset-0 h-modal h-full bg-shadow">
             <div
                 className="absolute translate-y-[-50%] translate-x-[-50%] top-[50%] left-[50%] w-[80%] md:w-[60%] lg:w-[30%] h-[auto] bg-white rounded-lg shadow">
                 <div className="relative ">

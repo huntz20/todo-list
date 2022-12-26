@@ -3,11 +3,26 @@ import addIcon from '../assets/add.svg'
 import TaskCard from "./TaskCard.jsx";
 import Modal from "./Modal.jsx";
 import TaskForm from "./TaskForm.jsx";
+import useTodoStore from "../../store/useTodoStore.js";
 
-const TodoCard = ({isLoading}) => {
-    const [showTaskModal, setShowTaskModal] = useState(false)
+const TodoCard = ({isLoading, data}) => {
+    const showTaskModal = useTodoStore(state => state.showTaskModal)
+    const setShowTaskModal = useTodoStore(state => state.setShowTaskModal)
+    const setParentSelected = useTodoStore(state => state.setParentSelected)
 
+
+
+    const handleOpenModalTask = () => {
+        setShowTaskModal(true)
+        setParentSelected(data.id)
+    }
+
+    const handleCloseModalTask = () => {
+        setShowTaskModal(false)
+        setParentSelected(null)
+    }
     const renderNoTask = () => {
+        if (data.children?.length) return null;
         return <div className="bg-[#f3f3f3] border-2 border-[#e3e3e3] rounded-sm py-1 px-4"><span
             className="font-light">No Task</span></div>
     }
@@ -40,27 +55,30 @@ const TodoCard = ({isLoading}) => {
         </div>
     }
     const renderTask = () => {
+        if (!data.children?.length) return null;
         return <div>
-            <TaskCard/>
-            <TaskCard/>
+            {data.children.map((e,i) => <TaskCard key={e.id} data={e} />)}
         </div>
     }
+
+
+
     if (isLoading) return renderLoading();
 
     return <div>
-        <Modal show={showTaskModal} onClose={() => setShowTaskModal(false)}>
-            <TaskForm/>
+        <Modal show={showTaskModal} onClose={handleCloseModalTask} title="Create Task ">
+            <TaskForm />
         </Modal>
         <div className="border-2 rounded p-4">
         <span className="border-2 font-light p-[6px] rounded-md inline-block mb-1">
-            Group Name
+            {data.title}
         </span><br/>
-            <span className="inline-block mb-2 text-xs">January - March</span>
+            <span className="inline-block mb-2 text-xs">{data.description}</span>
             <div className="mb-4">
-                {/*{renderNoTask()}*/}
+                {renderNoTask()}
                 {renderTask()}
             </div>
-            <div className="flex items-center cursor-pointer" onClick={() => setShowTaskModal(true)}>
+            <div className="flex items-center cursor-pointer" onClick={handleOpenModalTask}>
                 <img className="inline-block mr-2 " width="18" src={addIcon} alt="add-icon"/>
                 <span className="font-light text-sm">New Task</span>
             </div>
