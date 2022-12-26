@@ -44,7 +44,7 @@ function App() {
     const renderTodos = () => {
         if (todoLoading) return null;
         return <>
-            {todos.map(((e) => <TodoCard data={e} key={e.id} />))}
+            {todos.map(((e, i) => <TodoCard data={e} key={e.id} index={i} />))}
             {renderAddTodos()}
         </>
     }
